@@ -27,14 +27,16 @@ tracy-client = { version = "0.18.0", default-features = false }
 
 [workspace.dependencies.smithay]
 # version = "0.4.1"
-git = "https://github.com/Smithay/smithay.git"
+git = "https://github.com/tobhe/smithay.git"
 # path = "../smithay"
+branch = "openbsd"
 default-features = false
 
 [workspace.dependencies.smithay-drm-extras]
 # version = "0.1.0"
-git = "https://github.com/Smithay/smithay.git"
+git = "https://github.com/tobhe/smithay.git"
 # path = "../smithay/smithay-drm-extras"
+branch = "openbsd"
 
 [package]
 name = "niri"
@@ -121,7 +123,7 @@ wayland-client = "0.31.8"
 xshell = "0.2.7"
 
 [features]
-default = ["dbus", "systemd", "xdp-gnome-screencast"]
+default = ["dbus", "systemd"]
 # Enables D-Bus support (serve various freedesktop and GNOME interfaces, power button handling).
 dbus = ["dep:zbus", "dep:async-io", "dep:url"]
 # Enables systemd integration (global environment, apps in transient scopes).
@@ -174,3 +176,8 @@ assets = [
     ["resources/niri.service", "/usr/lib/systemd/user/", "644"],
     ["resources/niri-shutdown.target", "/usr/lib/systemd/user/", "644"],
 ]
+
+[patch.crates-io]
+libc = { branch = "openbsd-libc-0.2", git = "https://github.com/tobhe/libc-rs.git" }
+drm = { optional = true, branch = "openbsd-nobump", git = "https://github.com/tobhe/drm-rs.git" }
+xkbcommon-dl = { branch = "openbsd", git = "https://github.com/tobhe/xkbcommon-dl.git" }

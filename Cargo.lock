@@ -859,12 +859,11 @@ checksum = "f25c0e292a7ca6d6498557ff1df68f32c99850012b6ea401cf8daf771f22ff53"
 [[package]]
 name = "drm"
 version = "0.14.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "80bc8c5c6c2941f70a55c15f8d9f00f9710ebda3ffda98075f996a0e6c92756f"
+source = "git+https://github.com/tobhe/drm-rs.git?branch=openbsd-nobump#d574dfb0ad6aea62a3ab3ebc3870a931ec49d422"
 dependencies = [
  "bitflags 2.8.0",
  "bytemuck",
- "drm-ffi",
+ "drm-ffi 0.9.0 (git+https://github.com/tobhe/drm-rs.git?branch=openbsd-nobump)",
  "drm-fourcc",
  "libc",
  "rustix",
@@ -881,6 +880,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "drm-ffi"
+version = "0.9.0"
+source = "git+https://github.com/tobhe/drm-rs.git?branch=openbsd-nobump#d574dfb0ad6aea62a3ab3ebc3870a931ec49d422"
+dependencies = [
+ "drm-sys 0.8.0 (git+https://github.com/tobhe/drm-rs.git?branch=openbsd-nobump)",
+ "rustix",
+]
+
+[[package]]
 name = "drm-fourcc"
 version = "2.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -891,6 +899,15 @@ name = "drm-sys"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bafb66c8dbc944d69e15cfcc661df7e703beffbaec8bd63151368b06c5f9858c"
+dependencies = [
+ "libc",
+ "linux-raw-sys 0.6.5",
+]
+
+[[package]]
+name = "drm-sys"
+version = "0.8.0"
+source = "git+https://github.com/tobhe/drm-rs.git?branch=openbsd-nobump#d574dfb0ad6aea62a3ab3ebc3870a931ec49d422"
 dependencies = [
  "libc",
  "linux-raw-sys 0.6.5",
@@ -1926,8 +1943,7 @@ dependencies = [
 [[package]]
 name = "libc"
 version = "0.2.170"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "875b3680cb2f8f71bdcf9a30f38d48282f5d3c95cbf9b3fa57269bb5d5c06828"
+source = "git+https://github.com/tobhe/libc-rs.git?branch=openbsd-libc-0.2#a367ad93e810b0f61d8eb531291b9a1d5f1cd865"
 
 [[package]]
 name = "libdisplay-info"
@@ -3359,8 +3375,8 @@ checksum = "b7c388c1b5e93756d0c740965c41e8822f866621d41acbdf6336a6a168f8840c"
 
 [[package]]
 name = "smithay"
-version = "0.5.0"
-source = "git+https://github.com/Smithay/smithay.git#25cf3cf41c5027ffeb55f90c683736726a81d71f"
+version = "0.4.0"
+source = "git+https://github.com/tobhe/smithay.git?branch=openbsd#efcaf42722ec03dafbdb014b55b9598a4bfe024d"
 dependencies = [
  "appendlist",
  "bitflags 2.8.0",
@@ -3431,7 +3447,7 @@ dependencies = [
 [[package]]
 name = "smithay-drm-extras"
 version = "0.1.0"
-source = "git+https://github.com/Smithay/smithay.git#25cf3cf41c5027ffeb55f90c683736726a81d71f"
+source = "git+https://github.com/tobhe/smithay.git?branch=openbsd#efcaf42722ec03dafbdb014b55b9598a4bfe024d"
 dependencies = [
  "drm",
  "libdisplay-info",
@@ -4606,8 +4622,7 @@ dependencies = [
 [[package]]
 name = "xkbcommon-dl"
 version = "0.4.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d039de8032a9a8856a6be89cea3e5d12fdd82306ab7c94d74e6deab2460651c5"
+source = "git+https://github.com/tobhe/xkbcommon-dl.git?branch=openbsd#dc5f42e20156fcccf5d948cca775882d19e5d1ae"
 dependencies = [
  "bitflags 2.8.0",
  "dlib",
