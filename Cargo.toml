@@ -24,17 +24,8 @@ serde_json = "1.0.139"
 tracing = { version = "0.1.41", features = ["max_level_trace", "release_max_level_debug"] }
 tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
 tracy-client = { version = "0.18.0", default-features = false }
-
-[workspace.dependencies.smithay]
-# version = "0.4.1"
-git = "https://github.com/Smithay/smithay.git"
-# path = "../smithay"
-default-features = false
-
-[workspace.dependencies.smithay-drm-extras]
-# version = "0.1.0"
-git = "https://github.com/Smithay/smithay.git"
-# path = "../smithay/smithay-drm-extras"
+smithay = { path = "../smithay-efcaf42722ec03dafbdb014b55b9598a4bfe024d" }
+smithay-drm-extras = { path = "../smithay-efcaf42722ec03dafbdb014b55b9598a4bfe024d/smithay-drm-extras" }
 
 [package]
 name = "niri"
@@ -75,7 +66,6 @@ niri-ipc = { version = "25.2.0", path = "niri-ipc", features = ["clap"] }
 ordered-float = "5.0.0"
 pango = { version = "0.20.9", features = ["v1_44"] }
 pangocairo = "0.20.7"
-pipewire = { git = "https://gitlab.freedesktop.org/pipewire/pipewire-rs.git", optional = true, features = ["v0_3_33"] }
 png = "0.17.16"
 portable-atomic = { version = "1.11.0", default-features = false, features = ["float"] }
 profiling = "1.0.16"
@@ -121,13 +111,13 @@ wayland-client = "0.31.8"
 xshell = "0.2.7"
 
 [features]
-default = ["dbus", "systemd", "xdp-gnome-screencast"]
+default = ["dbus", "systemd"]
 # Enables D-Bus support (serve various freedesktop and GNOME interfaces, power button handling).
 dbus = ["dep:zbus", "dep:async-io", "dep:url"]
 # Enables systemd integration (global environment, apps in transient scopes).
 systemd = ["dbus"]
 # Enables screencasting support through xdg-desktop-portal-gnome.
-xdp-gnome-screencast = ["dbus", "pipewire"]
+xdp-gnome-screencast = ["dbus"]
 # Enables the Tracy profiler instrumentation.
 profile-with-tracy = ["profiling/profile-with-tracy", "tracy-client/default"]
 # Enables the on-demand Tracy profiler instrumentation.
@@ -174,3 +164,10 @@ assets = [
     ["resources/niri.service", "/usr/lib/systemd/user/", "644"],
     ["resources/niri-shutdown.target", "/usr/lib/systemd/user/", "644"],
 ]
+
+[patch.crates-io]
+libc = { path = "../libc-rs-a367ad93e810b0f61d8eb531291b9a1d5f1cd865" }
+drm = { path = "../drm-rs-d574dfb0ad6aea62a3ab3ebc3870a931ec49d422" }
+smithay = { path = "../smithay-efcaf42722ec03dafbdb014b55b9598a4bfe024d" }
+smithay-drm-extras = { path = "../smithay-efcaf42722ec03dafbdb014b55b9598a4bfe024d/smithay-drm-extras" }
+xkbcommon-dl = { path = "../xkbcommon-dl-dc5f42e20156fcccf5d948cca775882d19e5d1ae"}
