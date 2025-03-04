@@ -167,7 +167,9 @@ assets = [
 
 [patch.crates-io]
 libc = { path = "../libc-rs-a367ad93e810b0f61d8eb531291b9a1d5f1cd865" }
-drm = { path = "../drm-rs-d574dfb0ad6aea62a3ab3ebc3870a931ec49d422" }
+drm = { path = "../drm-rs-e32b22b505ffbe4a4b5476d66100ca3fe0b973f7" }
+drm-ffi = { path = "../drm-rs-e32b22b505ffbe4a4b5476d66100ca3fe0b973f7/drm-ffi" }
+drm-sys = { path = "../drm-rs-e32b22b505ffbe4a4b5476d66100ca3fe0b973f7/drm-ffi/drm-sys" }
 smithay = { path = "../smithay-efcaf42722ec03dafbdb014b55b9598a4bfe024d" }
 smithay-drm-extras = { path = "../smithay-efcaf42722ec03dafbdb014b55b9598a4bfe024d/smithay-drm-extras" }
 xkbcommon-dl = { path = "../xkbcommon-dl-dc5f42e20156fcccf5d948cca775882d19e5d1ae"}
