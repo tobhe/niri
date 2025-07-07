@@ -1,0 +1,20 @@
+From: Tobias Heider <me@tobhe.de>
+Date: Mon, 7 Jul 2025 19:08:58 +0200
+Subject: Exclude vendor dir from workspace
+
+---
+ Cargo.toml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index ed1d8b6..4882035 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -4,6 +4,7 @@ members = [
+     "niri-ipc",
+     "niri-visual-tests",
+ ]
++exclude = ["rust-vendor"]
+ 
+ [workspace.package]
+ version = "25.5.1"
