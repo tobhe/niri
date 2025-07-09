@@ -21,30 +21,35 @@ vendor-deps:
 	cargo vendor --manifest-path Cargo.toml $(CARGO_VENDOR_DIR)
 
 	for crate in $(CARGO_VENDOR_DIR)/*; do \
-		sed -i 's/^{"files":.*"package":"\([a-z0-9]\+\)"}$$/{"files":{},"package":"\1"}/' $$crate/.cargo-checksum.json; \
+		sed -i 's/^{"files":.*"package":\("\{0,1\}[a-z0-9]\+"\{0,1\}\)}$$/{"files":{},"package":\1}/' $$crate/.cargo-checksum.json; \
 	done
+
 	# Cleanup temp files
 	rm -rf $(CARGO_HOME)
 
-vendor-tarball: vendor-tarball-sanity-check vendor-deps
+vendor-tarball: vendor-tarball-sanity-check
 	tar --sort=name --mtime=@0 --owner=0 --group=0 --numeric-owner --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime -caf ../$(VENDOR_TARBALL) $(CARGO_VENDOR_DIR)
 
 %:
-	dh $@
+	dh $@ --buildsystem=cargo
+
+override_dh_dwz:
+	true
+
+override_dh_auto_test:
+	true
 
 override_dh_auto_configure:
 	# Prepare vendored rust dependencies
 	DEB_CARGO_CRATE=${DEB_SOURCE}_$(shell dpkg-parsechangelog --show-field Version) \
 	$(CARGO) prepare-debian $(CARGO_VENDOR_DIR)
 	/usr/share/cargo/bin/dh-cargo-vendored-sources
-	
-	# change PREFIX, LIBDIR, cargo path and enable build options
-	sed -i 's/usr\/local/usr/' Makefile
-	sed -i 's/LIBDIR_Linux = lib64$$/LIBDIR_Linux = lib\/$(DEB_HOST_MULTIARCH)/' Makefile
 	dh_auto_configure
+
+override_dh_auto_install:
+	dh_auto_install -O--buildsystem=cargo -- --locked
 
 override_dh_clean:
 	dh_clean
 	rm -rf wiki/img
 	rm -rf $(CARGO_HOME)
-	rm -rf $(CARGO_VENDOR_DIR)
