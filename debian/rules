@@ -47,7 +47,8 @@ override_dh_auto_configure:
 	dh_auto_configure
 
 override_dh_auto_install:
-	dh_auto_install -O--buildsystem=cargo -- --locked
+	DEB_CARGO_CRATE=${DEB_SOURCE}_$(shell dpkg-parsechangelog --show-field Version) \
+	DESTDIR=debian/niri $(CARGO) install --locked
 
 override_dh_clean:
 	dh_clean

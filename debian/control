@@ -30,12 +30,13 @@ Multi-Arch: same
 Depends:
  ${shlibs:Depends},
  ${misc:Depends},
- ${cargo:Depends},
 Suggests:
- ${cargo:Suggests}
-Provides:
- ${cargo:Provides}
-Built-Using: ${cargo:Built-Using}
-XB-X-Cargo-Built-Using: ${cargo:X-Cargo-Built-Using}
+ gnome-keyring,
+ xdg-desktop-portal-gnome,
+ xdg-desktop-portal-gtk,
+ alacritty,
+ fuzzel,
+ swaylock,
+ waybar
 Pre-Depends: ${misc:Pre-Depends}
 Description: Scrollable-tiling Wayland compositor
