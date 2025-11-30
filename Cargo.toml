@@ -31,13 +31,13 @@ tracy-client = { version = "0.18.3", default-features = false }
 [workspace.dependencies.smithay]
 # version = "0.4.1"
 # git = "https://github.com/Smithay/smithay.git"
-path = "../smithay"
+path = "../smithay-95c73b3e06ab9f83f7a1a886f31e8da2215ee1cd"
 default-features = false
 
 [workspace.dependencies.smithay-drm-extras]
 # version = "0.1.0"
 # git = "https://github.com/Smithay/smithay.git"
-path = "../smithay/smithay-drm-extras"
+path = "../smithay-95c73b3e06ab9f83f7a1a886f31e8da2215ee1cd/smithay-drm-extras"
 
 [package]
 name = "niri"
@@ -186,8 +186,6 @@ assets = [
 ]
 
 [patch.crates-io]
-drm = { path = "../drm-rs" }
-drm-ffi = { path = "../drm-rs/drm-ffi" }
-drm-sys = { path = "../drm-rs/drm-ffi/drm-sys" }
-smithay = { path = "../smithay" }
-smithay-drm-extras = { path = "../smithay/smithay-drm-extras" }
+drm = { path = "../drm-rs-e32b22b505ffbe4a4b5476d66100ca3fe0b973f7" }
+drm-ffi = { path = "../drm-rs-e32b22b505ffbe4a4b5476d66100ca3fe0b973f7/drm-ffi" }
+drm-sys = { path = "../drm-rs-e32b22b505ffbe4a4b5476d66100ca3fe0b973f7/drm-ffi/drm-sys" }
