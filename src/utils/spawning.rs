@@ -306,7 +306,7 @@ mod systemd {
                             #[cfg(target_os = "openbsd")]
                             {
                                 let raw = pipe.as_raw_fd();
-                                for fd in 0..(raw - 1) {
+                                for fd in 0..raw {
                                     close(fd);
                                 }
                                 closefrom(raw + 1);
