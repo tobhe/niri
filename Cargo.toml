@@ -189,3 +189,4 @@ assets = [
 drm = { path = "../drm-rs-e32b22b505ffbe4a4b5476d66100ca3fe0b973f7" }
 drm-ffi = { path = "../drm-rs-e32b22b505ffbe4a4b5476d66100ca3fe0b973f7/drm-ffi" }
 drm-sys = { path = "../drm-rs-e32b22b505ffbe4a4b5476d66100ca3fe0b973f7/drm-ffi/drm-sys" }
+polling = { path = "../polling-ade9e50967a17e32228597ad756fff8965a42a01" }
